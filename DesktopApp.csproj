@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <!-- UseWindowsForms is the signal onboard.sh looks for (within 3 directories)
+         to route this to the desktop shape, which runs tests on windows-latest.
+         Without it the repo resolves to `console` and dotnet build fails on
+         ubuntu, because the Windows Desktop targeting packs ship with the SDK
+         only on Windows. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DesktopApp</RootNamespace>
+  </PropertyGroup>
+
+</Project>
