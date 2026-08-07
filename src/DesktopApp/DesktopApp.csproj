@@ -2,13 +2,18 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <!-- UseWindowsForms is the signal onboard.sh looks for (within 3 directories)
          to route this to the desktop shape, which runs tests on windows-latest.
          Without it the repo resolves to `console` and dotnet build fails on
          ubuntu, because the Windows Desktop targeting packs ship with the SDK
          only on Windows. -->
     <UseWindowsForms>true</UseWindowsForms>
+    <!-- Permits `dotnet restore` on Linux for a Windows-targeted project.
+         Without it restore fails with NETSDK1100, which is why this template's
+         solution paths could not be sanity-checked from a Codespace. No effect
+         on the Windows build; test.yml still runs on windows-latest. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>DesktopApp</RootNamespace>
